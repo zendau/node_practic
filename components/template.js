@@ -7,19 +7,19 @@ function main_body(args) {
     let body = ""
     switch (args['template']) {
         case "main":
-            body = main_page.render_page()
+            body = main_page.render_page(args['content'])
             break
 
         case "about":
-            body = about_page.render_page()
+            body = about_page.render_page(args['content'])
             break
 
         case "user":
-            body = user_page.render_page()
+            body = user_page.render_page(args['content'])
             break
 
         case "shop":
-            body = shop_page.render_page()
+            body = shop_page.render_page(args['content'])
             break
                 
     }

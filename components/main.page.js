@@ -1,4 +1,4 @@
-function render_page() {
+function render_page(content = []) {
     return `
         <h1 class="main-section__title">Main page</h1>
     `

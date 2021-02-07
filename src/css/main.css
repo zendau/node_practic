@@ -38,9 +38,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .main-section__title {
     font-size: 60px;
     font-family: 'Open Sans', sans-serif;
+}
+
+.user__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.user__form input, button {
+    margin: 5px 0;
+    font-size: 20px;
 }
