@@ -8,18 +8,22 @@ function render_page(content = []) {
 }
 
 function render_list(content) {
-    
     const html = []
     content.forEach(item => {
-        html.push(`
-        <li>
-            <h2>${item['title']}</h2>
-            <h2>${item['img']}</h2>
-            <p>${item['price']}</p>
-        </li>
+        html.push(/*html*/`
+        <div class="card" style="width: 18rem;">
+            <img src="${item['img']}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${item['title']}</h5>
+                <p class="card-text">
+                    ${new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB' }).format(item['price'])}
+                </p>
+                <a href="/item/${item['_id']}" class="btn btn-primary">Read</a>
+            </div>
+        </div>
         `)
     })
-    return html
+    return html.join("")
 }
 
 module.exports = {

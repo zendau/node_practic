@@ -55,3 +55,34 @@ body {
     margin: 5px 0;
     font-size: 20px;
 }
+
+/* Bootstrap */
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.nav-link {
+    font-size: 20px;
+}
+
+.bg-light {
+    background-color: #d3e0ea!important;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.mb-3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.mb-3 label{
+    margin: 0 auto;
+}
