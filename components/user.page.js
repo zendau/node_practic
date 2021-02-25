@@ -19,6 +19,7 @@ function render_page(content = []) {
                     <label for="f_desk">Deskription</label>
                 </div>
             </div>
+            <input type="hidden" value=${content}>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     `

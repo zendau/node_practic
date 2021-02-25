@@ -11,4 +11,9 @@ const usersSchema = new Schema({
     }]
 })
 
+usersSchema.methods.addItem = function(item) {
+    this.basket.push(item)
+    return this.save()
+}
+
 module.exports = model("Users", usersSchema)

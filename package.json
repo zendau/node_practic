@@ -18,10 +18,19 @@
   },
   "homepage": "https://github.com/zendau/node_practic#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "consola": "^2.15.3",
+    "cookie-parser": "^1.4.5",
+    "csurf": "^1.11.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.10.0",
+    "helmet": "^4.4.1",
     "mongoose": "^5.11.15",
+    "multer": "^1.4.2",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.4.18",
     "nodemon": "^2.0.7"
   }
 }

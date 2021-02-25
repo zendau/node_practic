@@ -5,8 +5,10 @@ const user_page = require("./user.page")
 const item_page = require("./item.page")
 const reg_page = require("./register.page")
 const login_page = require("./login.page")
+const page_404 = require("./404.page")
+const upload_page = require("./upload.page")
 
-function main_body(args) {
+function main_body(args = []) {
     let body = ""
     switch (args['template']) {
         case "main":
@@ -36,7 +38,22 @@ function main_body(args) {
         case "reg":
             body = reg_page.render_page(args['content'])
             break
+
+        case "upload":
+            body = upload_page.render_page(args['content'])
+            break
+            
+        default:
+            body = page_404.render_page(args['content'])
                 
+    }
+    let status = false
+    try {
+        if (args['session']['user'] !== undefined) {
+            status = true
+        }
+    } catch (e) {
+        status = false
     }
     
     return /*html*/ `
@@ -60,15 +77,7 @@ function main_body(args) {
                 <li class="nav-item">
                     <a class="nav-link ${args['template'] === "main" ? "active": ""}" href="/" tabindex="-1" aria-disabled="true">Main</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link ${args['template'] === "shop" ? "active": ""}" aria-current="page" href="/shop">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ${args['template'] === "card" ? "active": ""}" href="/card">Card</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ${args['template'] === "user" ? "active": ""}" href="/user">User</a>
-                </li>
+                ${status ? user_menu(args) : guest_menu(args)}
                 </ul>
             </div>
             </div>
@@ -83,6 +92,36 @@ function main_body(args) {
     `
 }
 
+function user_menu(args) {
+    return /*html*/ `
+        <li class="nav-item">
+            <a class="nav-link ${args['template'] === "shop" ? "active": ""}" aria-current="page" href="/shop">Shop</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link ${args['template'] === "card" ? "active": ""}" href="/card">Card</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link ${args['template'] === "upload" ? "active": ""}" href="/upload">Upload</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link ${args['template'] === "user" ? "active": ""}" href="/user">User</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link ${args['template'] === "exit" ? "active": ""}" href="/exit">Exit</a>
+        </li>
+    `
+}
+
+function guest_menu(args) {
+    return /*html*/ `
+        <li class="nav-item">
+            <a class="nav-link ${args['template'] === "login" ? "active": ""}" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link ${args['template'] === "reg" ? "active": ""}" href="/register" >Register</a>
+        </li>
+    `
+}
 
 module.exports = {
     main_body
